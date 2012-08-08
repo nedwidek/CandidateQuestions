@@ -1,0 +1,8 @@
+﻿# Comments start line with '#'
+# List one candidate per line.
+Ansel Abrams
+Betty Brahms
+Candice Coolidge
+Daniel Darkins
+Edwina Ethens
+Frank Firmness
