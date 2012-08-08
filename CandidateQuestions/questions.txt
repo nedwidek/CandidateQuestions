@@ -1,0 +1,5 @@
+﻿# Comments start with a '#'
+# One question per line. Start the line with the number of seconds allowed.
+60 How old are you?
+60 Being in office is a thankless job. Are you insane?
+240 Show us how much of a windbag you can be. Can you talk for this long?
