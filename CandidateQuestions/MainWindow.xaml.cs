@@ -23,6 +23,7 @@ namespace com.hatterassoftware.candidatequestions
     {
         private List<String> candidateList = new List<String>();
         private List<Question> questionList = new List<Question>();
+        private String titleText;
 
         private TextBlock[] textBlocks;
 
@@ -45,6 +46,7 @@ namespace com.hatterassoftware.candidatequestions
 
                 String[] questions = System.IO.File.ReadAllLines(@"questions.txt");
                 String[] candidates = System.IO.File.ReadAllLines(@"candidates.txt");
+                String[] title = System.IO.File.ReadAllLines(@"title.txt");
 
                 foreach (String line in questions)
                 {
@@ -71,6 +73,15 @@ namespace com.hatterassoftware.candidatequestions
                     if (line.StartsWith("#")) continue;
                     candidateList.Add(line);
                 }
+
+                foreach (String line in title)
+                {
+                    if (line.StartsWith("#")) continue;
+                    titleText = line;
+                    break;
+                }
+
+                titleBlock.Text = titleText;
 
                 textBlocks = new TextBlock[candidateList.Count];
 
@@ -364,6 +375,10 @@ namespace com.hatterassoftware.candidatequestions
         private void quitClicked(Object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e) {
+            // Use page_up and page_down to drive program so it can be used with a wireless presenter.
         }
     }
 }
