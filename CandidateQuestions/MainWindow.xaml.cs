@@ -68,11 +68,15 @@ namespace com.hatterassoftware.candidatequestions
                     questionList.Add(q);
                 }
 
+                Debug.WriteLine("Loaded questions");
+
                 foreach (String line in candidates)
                 {
                     if (line.StartsWith("#")) continue;
                     candidateList.Add(line);
                 }
+
+                Debug.WriteLine("loaded candidates");
 
                 foreach (String line in title)
                 {
@@ -80,6 +84,8 @@ namespace com.hatterassoftware.candidatequestions
                     titleText = line;
                     break;
                 }
+
+                Debug.WriteLine("loaded title");
 
                 titleBlock.Text = titleText;
 
@@ -98,10 +104,12 @@ namespace com.hatterassoftware.candidatequestions
                 }
 
                 this.setCurrentCandidate(currCandidate);
+
             }
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
+                System.Diagnostics.Debug.WriteLine(e.StackTrace);
             }
 
         }
@@ -245,6 +253,8 @@ namespace com.hatterassoftware.candidatequestions
             next.Visibility = System.Windows.Visibility.Collapsed;
             prev.Visibility = System.Windows.Visibility.Collapsed;
 
+            state = 3;
+
             countdownTimer.Start();
         }
 
@@ -379,6 +389,30 @@ namespace com.hatterassoftware.candidatequestions
 
         protected override void OnKeyUp(KeyEventArgs e) {
             // Use page_up and page_down to drive program so it can be used with a wireless presenter.
+            if (e.Key == Key.PageDown)
+            {
+                switch (state)
+                {
+                    case 1:
+                        startRoundClicked(null, null);
+                        break;
+                    case 2:
+                        startClicked(null, null);
+                        break;
+                    case 3:
+                        if (pause.IsVisible)
+                        {
+                            pauseClicked(null, null);
+                        } else
+                        {
+                            nextClicked(null, null);
+                        }
+                        break;
+                    case 5:
+                        quitClicked(null, null);
+                        break;
+                }
+            }
         }
     }
 }
