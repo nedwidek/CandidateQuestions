@@ -42,6 +42,8 @@ question is entered on a line by itself with the time limit and font size listed
 first. "60 36 How old are you?" will display the question in a 36 point font for 
 1 minute. 
 
+The program will exit at the end, but you can stop it at any time by pressing Alt-F4.
+
 This program and the associated code are provided gratis under the BSD Revised 
 license. This means that it is free of charge to use and may be freely modified to 
 meet your needs.

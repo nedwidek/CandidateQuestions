@@ -112,6 +112,7 @@ namespace com.hatterassoftware.candidatequestions
                     "Number Format Errors", MessageBoxButton.OK, MessageBoxImage.Error);
                 System.Diagnostics.Debug.WriteLine(e.Message);
                 System.Diagnostics.Debug.WriteLine(e.StackTrace);
+                Application.Current.Shutdown();
             }
             catch (Exception e)
             {
@@ -119,9 +120,6 @@ namespace com.hatterassoftware.candidatequestions
                     "Initialization Errors", MessageBoxButton.OK, MessageBoxImage.Error);
                 System.Diagnostics.Debug.WriteLine(e.Message);
                 System.Diagnostics.Debug.WriteLine(e.StackTrace);
-            }
-            finally
-            {                
                 Application.Current.Shutdown();
             }
 
