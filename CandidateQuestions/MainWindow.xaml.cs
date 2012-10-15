@@ -106,10 +106,23 @@ namespace com.hatterassoftware.candidatequestions
                 this.setCurrentCandidate(currCandidate);
 
             }
-            catch (Exception e)
+            catch (FormatException e)
             {
+                MessageBox.Show("Please check questions.txt and verify that each question starts with two numbers. The first is number of seconds and the second is the font size.",
+                    "Number Format Errors", MessageBoxButton.OK, MessageBoxImage.Error);
                 System.Diagnostics.Debug.WriteLine(e.Message);
                 System.Diagnostics.Debug.WriteLine(e.StackTrace);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An exception occurred during setup. The message was:\n   \"" + e.Message + "\"\n\nPlease check configuration files for any errors.",
+                    "Initialization Errors", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                System.Diagnostics.Debug.WriteLine(e.StackTrace);
+            }
+            finally
+            {                
+                Application.Current.Shutdown();
             }
 
         }
