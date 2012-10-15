@@ -60,7 +60,7 @@ namespace com.hatterassoftware.candidatequestions
                     timeStr = line.Substring(0, line.IndexOf(" "));
                     tmpLine = line.Substring(line.IndexOf(" ") + 1);
                     fontSizeStr = tmpLine.Substring(0, line.IndexOf(" "));
-                    question = tmpLine.Substring(line.IndexOf(" ") + 1);
+                    question = tmpLine.Substring(line.IndexOf(" "));
 
                     Debug.WriteLine("timeStr=" + timeStr + ", fontSizeStr=" + fontSizeStr + ", question=" + question);
 
